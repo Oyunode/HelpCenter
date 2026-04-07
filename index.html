@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Аюулгүй Байдал — Хүчирхийллийн эсрэг мэдээлэл, тусламж</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&family=Montserrat:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #7a9e87;
+    --sage-light: #a8c4b0;
+    --sage-dark: #4e7260;
+    --warm: #f5efe6;
+    --warm-mid: #e8ddd0;
+    --warm-dark: #c8b9a8;
+    --sky: #8ab4c9;
+    --sky-light: #d4e8f2;
+    --text: #2e3a30;
+    --text-soft: #5a6b5d;
+    --text-muted: #8a9b8d;
+    --danger: #c0392b;
+    --danger-light: #f5e6e5;
+    --white: #ffffff;
+    --card-shadow: 0 4px 24px rgba(46,58,48,0.08);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--warm);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── QUICK EXIT ── */
+  #quick-exit {
+    position: fixed;
+    top: 16px; right: 16px;
+    z-index: 9999;
+    background: var(--danger);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(192,57,43,0.35);
+    letter-spacing: 0.5px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  #quick-exit:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(192,57,43,0.45); }
+  #quick-exit::before { content: "✕"; font-size: 15px; }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--warm-mid);
+    padding: 0 24px;
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .nav-logo {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--sage-dark);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .nav-logo span { font-size: 22px; }
+  .nav-links {
+    display: flex; gap: 4px; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-soft);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    background: var(--sage-light);
+    color: var(--sage-dark);
+  }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+
+  /* ── SECTIONS ── */
+  section { display: none; }
+  section.active { display: block; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 60%, var(--sky) 100%);
+    color: var(--white);
+    padding: 80px 24px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.25;
+  }
+  .hero p {
+    font-size: 16px;
+    opacity: 0.9;
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+  .hero-search {
+    display: flex;
+    max-width: 480px;
+    margin: 0 auto 48px;
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+  }
+  .hero-search input {
+    flex: 1; background: none; border: none; outline: none;
+    color: #fff; font-size: 14px; padding: 14px 20px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .hero-search input::placeholder { color: rgba(255,255,255,0.65); }
+  .hero-search button {
+    background: rgba(255,255,255,0.25); border: none;
+    color: #fff; padding: 14px 22px; cursor: pointer;
+    font-size: 16px; transition: background 0.2s;
+  }
+  .hero-search button:hover { background: rgba(255,255,255,0.35); }
+  .hero-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(255,255,255,0.25);
+    border-radius: var(--radius);
+    padding: 22px 16px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    text-align: center;
+  }
+  .hero-card:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+  .hero-card .icon { font-size: 28px; margin-bottom: 10px; }
+  .hero-card .label { font-size: 13px; font-weight: 600; }
+  .hero-card.urgent {
+    background: rgba(192,57,43,0.3);
+    border-color: rgba(255,150,140,0.4);
+  }
+
+  /* ── EMERGENCY BANNER ── */
+  .emergency-banner {
+    background: var(--danger);
+    color: #fff;
+    text-align: center;
+    padding: 14px 24px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .emergency-banner a {
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 14px;
+    border-radius: 50px;
+    font-size: 13px;
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: background 0.2s;
+  }
+  .emergency-banner a:hover { background: rgba(255,255,255,0.35); }
+
+  /* ── CONTAINER ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  .section-header {
+    text-align: center;
+    padding: 56px 0 36px;
+  }
+  .section-header h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(22px, 4vw, 34px);
+    color: var(--sage-dark);
+    margin-bottom: 10px;
+  }
+  .section-header p { color: var(--text-soft); font-size: 15px; max-width: 520px; margin: 0 auto; }
+
+  /* ── CARDS GRID ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    padding-bottom: 60px;
+  }
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--warm-mid);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 8px 36px rgba(46,58,48,0.13); }
+  .card-icon { font-size: 32px; margin-bottom: 14px; }
+  .card h3 { font-family: 'Lora', serif; font-size: 17px; color: var(--text); margin-bottom: 8px; }
+  .card p { font-size: 13.5px; color: var(--text-soft); line-height: 1.65; }
+  .card-tag {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: var(--sage-dark);
+    background: var(--sky-light);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  /* ── INFO SECTION ── */
+  .info-wrap { padding-bottom: 60px; }
+  .info-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .tab-btn {
+    background: var(--white);
+    border: 1.5px solid var(--warm-mid);
+    color: var(--text-soft);
+    padding: 9px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .tab-btn:hover, .tab-btn.active {
+    background: var(--sage-dark);
+    border-color: var(--sage-dark);
+    color: #fff;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .info-article {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 36px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--warm-mid);
+  }
+  .info-article h3 {
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    color: var(--sage-dark);
+    margin-bottom: 16px;
+  }
+  .info-article p { color: var(--text-soft); margin-bottom: 14px; line-height: 1.8; }
+  .info-article ul { padding-left: 20px; color: var(--text-soft); margin-bottom: 14px; }
+  .info-article ul li { margin-bottom: 8px; line-height: 1.7; }
+  .info-article .warning-box {
+    background: var(--danger-light);
+    border-left: 4px solid var(--danger);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    color: #7a2020;
+    font-size: 14px;
+  }
+  .info-article .tip-box {
+    background: var(--sky-light);
+    border-left: 4px solid var(--sky);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    color: #2a4a5e;
+    font-size: 14px;
+  }
+
+  /* ── HELP CENTERS ── */
+  .help-wrap { padding-bottom: 60px; }
+  .help-filters {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;
+  }
+  .filter-btn {
+    background: var(--white);
+    border: 1.5px solid var(--warm-mid);
+    color: var(--text-soft);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: #fff;
+  }
+  .help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+  }
+  .help-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--warm-mid);
+    border-left: 4px solid var(--sage);
+  }
+  .help-card h4 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .help-card .org-type { font-size: 11px; letter-spacing: 0.7px; font-weight: 700; color: var(--sage-dark); text-transform: uppercase; margin-bottom: 12px; }
+  .help-card .contact-row {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13.5px; color: var(--text-soft); margin-bottom: 6px;
+  }
+  .help-card .contact-row a { color: var(--sage-dark); text-decoration: none; font-weight: 600; }
+  .help-card .phone-big {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--sage-dark);
+    margin: 10px 0 4px;
+    letter-spacing: 1px;
+  }
+  .help-card.emergency { border-left-color: var(--danger); }
+  .help-card.emergency .phone-big { color: var(--danger); }
+
+  /* ── ASSESSMENT ── */
+  .assessment-wrap { padding-bottom: 60px; }
+  .quiz-box {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 40px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--warm-mid);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .quiz-disclaimer {
+    background: var(--sky-light);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    font-size: 13px;
+    color: #2a4a5e;
+    margin-bottom: 28px;
+    line-height: 1.65;
+  }
+  .quiz-progress-bar {
+    background: var(--warm-mid);
+    border-radius: 50px;
+    height: 6px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    background: linear-gradient(90deg, var(--sage), var(--sky));
+    height: 100%;
+    border-radius: 50px;
+    transition: width 0.4s ease;
+  }
+  .quiz-question { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
+  .quiz-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+  .quiz-option {
+    background: var(--warm);
+    border: 2px solid var(--warm-mid);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-soft);
+    transition: all 0.2s;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .quiz-option:hover { border-color: var(--sage); color: var(--sage-dark); background: var(--white); }
+  .quiz-option.selected { border-color: var(--sage-dark); background: var(--sage-dark); color: #fff; }
+  .quiz-nav { display: flex; justify-content: space-between; margin-top: 28px; gap: 12px; }
+  .btn {
+    padding: 12px 28px;
+    border-radius: 50px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: var(--sage-dark); color: #fff; }
+  .btn-primary:hover { background: var(--sage); transform: translateY(-1px); }
+  .btn-outline { background: transparent; border: 2px solid var(--warm-mid); color: var(--text-soft); }
+  .btn-outline:hover { border-color: var(--sage); color: var(--sage-dark); }
+  .btn-danger { background: var(--danger); color: #fff; }
+  .btn-danger:hover { background: #a93226; transform: translateY(-1px); }
+  .quiz-result {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .result-icon { font-size: 56px; margin-bottom: 16px; }
+  .result-title { font-family: 'Lora', serif; font-size: 24px; margin-bottom: 12px; }
+  .result-desc { color: var(--text-soft); font-size: 15px; margin-bottom: 24px; line-height: 1.75; }
+  .result-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .badge-low { background: #e8f5e9; color: #2e7d32; }
+  .badge-med { background: #fff8e1; color: #f57f17; }
+  .badge-high { background: var(--danger-light); color: var(--danger); }
+
+  /* ── FAQ ── */
+  .faq-wrap { padding-bottom: 60px; }
+  .faq-list { display: flex; flex-direction: column; gap: 10px; }
+  .faq-item {
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--warm-mid);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+  }
+  .faq-q {
+    padding: 18px 22px;
+    font-weight: 600;
+    font-size: 14.5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    color: var(--text);
+    transition: background 0.2s;
+  }
+  .faq-q:hover { background: var(--warm); }
+  .faq-q .chevron { transition: transform 0.3s; font-size: 12px; color: var(--sage); flex-shrink: 0; }
+  .faq-item.open .chevron { transform: rotate(180deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s;
+    font-size: 14px;
+    color: var(--text-soft);
+    line-height: 1.75;
+    padding: 0 22px;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 22px 18px; }
+
+  /* ── CONTACT / FEEDBACK ── */
+  .contact-wrap { padding-bottom: 60px; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 680px) { .contact-grid { grid-template-columns: 1fr; } }
+  .form-box {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--warm-mid);
+  }
+  .form-box h3 { font-family: 'Lora', serif; font-size: 20px; color: var(--sage-dark); margin-bottom: 20px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    background: var(--warm);
+    border: 1.5px solid var(--warm-mid);
+    border-radius: var(--radius-sm);
+    padding: 11px 14px;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text);
+    outline: none;
+    transition: border 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--sage);
+    background: var(--white);
+  }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-note { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+  .success-msg {
+    text-align: center;
+    padding: 24px;
+    color: var(--sage-dark);
+    font-weight: 600;
+    display: none;
+  }
+  .success-msg .big { font-size: 40px; display: block; margin-bottom: 10px; }
+
+  /* ── ADMIN ── */
+  .admin-login {
+    max-width: 420px;
+    margin: 60px auto;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 40px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--warm-mid);
+  }
+  .admin-panel { padding-bottom: 60px; }
+  .admin-panel h3 { font-family: 'Lora', serif; font-size: 20px; color: var(--sage-dark); margin-bottom: 20px; }
+  .admin-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .admin-tab {
+    background: var(--warm);
+    border: 1.5px solid var(--warm-mid);
+    color: var(--text-soft);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.2s;
+  }
+  .admin-tab.active { background: var(--sage-dark); border-color: var(--sage-dark); color: #fff; }
+  .admin-content { display: none; }
+  .admin-content.active { display: block; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .data-table th {
+    background: var(--warm-mid);
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--text-soft);
+  }
+  .data-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--warm-mid);
+    vertical-align: top;
+    color: var(--text-soft);
+  }
+  .data-table tr:hover td { background: var(--warm); }
+  .status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .status-pub { background: #e8f5e9; color: #2e7d32; }
+  .status-draft { background: #fff8e1; color: #f57f17; }
+  .table-wrap { background: var(--white); border-radius: var(--radius); overflow: auto; box-shadow: var(--card-shadow); border: 1px solid var(--warm-mid); }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 28px; }
+  .stat-card { background: var(--white); border-radius: var(--radius-sm); padding: 22px; box-shadow: var(--card-shadow); border: 1px solid var(--warm-mid); text-align: center; }
+  .stat-card .num { font-size: 32px; font-weight: 700; color: var(--sage-dark); }
+  .stat-card .lbl { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--sage-dark);
+    color: rgba(255,255,255,0.75);
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  footer a { color: rgba(255,255,255,0.9); text-decoration: underline; }
+  footer .emergency-line { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 700px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--warm-mid); padding: 12px; gap: 4px; z-index: 200; }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    #quick-exit { top: 12px; right: 12px; padding: 8px 14px; font-size: 12px; }
+    .hero { padding: 60px 20px 48px; }
+    .quiz-box, .form-box, .info-article { padding: 24px 18px; }
+    .admin-login { margin: 30px 16px; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.5s ease both; }
+  .fade-up:nth-child(2) { animation-delay: 0.08s; }
+  .fade-up:nth-child(3) { animation-delay: 0.16s; }
+  .fade-up:nth-child(4) { animation-delay: 0.24s; }
+  .fade-up:nth-child(5) { animation-delay: 0.32s; }
+  .fade-up:nth-child(6) { animation-delay: 0.40s; }
+
+  .admin-add-form {
+    background: var(--warm);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+    margin-bottom: 24px;
+    border: 1.5px dashed var(--warm-dark);
+  }
+  .admin-add-form h4 { font-size: 14px; font-weight: 700; color: var(--sage-dark); margin-bottom: 16px; }
+  .inline-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .inline-form .full { grid-column: 1/-1; }
+  @media (max-width: 580px) { .inline-form { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- Quick Exit -->
+<button id="quick-exit" onclick="quickExit()" title="Хурдан гарах">Гарах</button>
+
+<!-- Emergency Banner -->
+<div class="emergency-banner">
+  🚨 Яаралтай тусламж хэрэгтэй бол: <a href="tel:102">102 — Цагдаа</a>
+  <a href="tel:107">107 — Онцгой байдал</a>
+  <a href="tel:1800-1200">1800-1200 — Хүчирхийллийн эсрэг</a>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <a class="nav-logo" href="#" onclick="showSection('home')">
+    <span>🌿</span> Аюулгүй Байдал
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#" onclick="showSection('home')" class="active" id="nav-home">Нүүр</a></li>
+    <li><a href="#" onclick="showSection('info')" id="nav-info">Мэдээлэл</a></li>
+    <li><a href="#" onclick="showSection('help')" id="nav-help">Тусламж авах</a></li>
+    <li><a href="#" onclick="showSection('assess')" id="nav-assess">Өөрийгөө үнэлэх</a></li>
+    <li><a href="#" onclick="showSection('faq')" id="nav-faq">Асуулт &amp; Хариулт</a></li>
+    <li><a href="#" onclick="showSection('contact')" id="nav-contact">Холбоо барих</a></li>
+    <li><a href="#" onclick="showSection('admin-login')" id="nav-admin">Админ</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Цэс">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══ HOME ══ -->
+<section id="home" class="active">
+  <div class="hero">
+    <div class="hero-badge">🌿 АЮУЛГҮЙ ОРЧИН • НУУЦЛАЛТАЙ</div>
+    <h1>Та ганцаараа биш.<br>Бид таны хажууд байна.</h1>
+    <p>Хүчирхийллийн тухай мэдлэг олж, өөрийгөө хамгаалж, тусламж авах боломжтой нууцлалтай орчин.</p>
+    <div class="hero-search">
+      <input type="text" placeholder="Хайх... (жиш. сэтгэл зүйн дарамт, тусламжийн утас)" id="hero-search-input">
+      <button onclick="doSearch()">🔍</button>
+    </div>
+    <div class="hero-cards">
+      <div class="hero-card fade-up" onclick="showSection('info')">
+        <div class="icon">📚</div>
+        <div class="label">Хүчирхийлэл гэж юу вэ?</div>
+      </div>
+      <div class="hero-card fade-up" onclick="showSection('help')">
+        <div class="icon">🤝</div>
+        <div class="label">Тусламж авах</div>
+      </div>
+      <div class="hero-card fade-up" onclick="showSection('assess')">
+        <div class="icon">🛡️</div>
+        <div class="label">Өөрийгөө үнэлэх</div>
+      </div>
+      <div class="hero-card fade-up urgent" onclick="callEmergency()">
+        <div class="icon">🚨</div>
+        <div class="label">Яаралтай үед</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section-header">
+      <h2>Юу мэдэх хэрэгтэй вэ?</h2>
+      <p>Хүчирхийллийн янз бүрийн хэлбэрийг таньж мэдэх нь хамгаалалтын эхний алхам юм.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="card fade-up" onclick="showInfoTab('family')">
+        <div class="card-icon">🏠</div>
+        <h3>Гэр бүлийн хүчирхийлэл</h3>
+        <p>Гэр бүлийн дотор болдог бие махбодийн, сэтгэл зүйн, санхүүгийн дарамтын шинж тэмдгүүд.</p>
+        <span class="card-tag">МЭДЭХ →</span>
+      </div>
+      <div class="card fade-up" onclick="showInfoTab('psych')">
+        <div class="card-icon">🧠</div>
+        <h3>Сэтгэл зүйн дарамт</h3>
+        <p>Харагдахгүй ч гүнзгий хохирол учруулдаг сэтгэл зүйн дарамтыг хэрхэн таних вэ?</p>
+        <span class="card-tag">МЭДЭХ →</span>
+      </div>
+      <div class="card fade-up" onclick="showInfoTab('cyber')">
+        <div class="card-icon">💻</div>
+        <h3>Цахим дарамт</h3>
+        <p>Интернэт, утас, социал медиа орчин дахь дарамт, заналхийлэл, дагаж мөрдөлт.</p>
+        <span class="card-tag">МЭДЭХ →</span>
+      </div>
+      <div class="card fade-up" onclick="showInfoTab('child')">
+        <div class="card-icon">👶</div>
+        <h3>Хүүхдийн эсрэг хүчирхийлэл</h3>
+        <p>Хүүхэд хохирогч болж буйн шинж тэмдэгт юу хийх вэ? Яаж тусламж авах вэ?</p>
+        <span class="card-tag">МЭДЭХ →</span>
+      </div>
+      <div class="card fade-up" onclick="showInfoTab('legal')">
+        <div class="card-icon">⚖️</div>
+        <h3>Хууль эрх зүйн мэдээлэл</h3>
+        <p>Монгол улсын хүчирхийлэлтэй тэмцэх хуулиуд, таны эрх, хамгаалуулах арга замууд.</p>
+        <span class="card-tag">МЭДЭХ →</span>
+      </div>
+      <div class="card fade-up" onclick="showInfoTab('protect')">
+        <div class="card-icon">🛡️</div>
+        <h3>Өөрийгөө хамгаалах</h3>
+        <p>Практик зөвлөмж: аюулгүй төлөвлөгөө, нотлох баримт цуглуулах, тусламж хүсэх арга.</p>
+        <span class="card-tag">МЭДЭХ →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INFO ══ -->
+<section id="info">
+  <div class="container">
+    <div class="section-header">
+      <h2>Мэдээлэл ба Боловсрол</h2>
+      <p>Хүчирхийллийн талаар бодитой мэдлэг олж, өөрийгөө болон ойр дотнынхоо хүмүүсийг хамгаал.</p>
+    </div>
+    <div class="info-wrap">
+      <div class="info-tabs">
+        <button class="tab-btn active" onclick="showInfoTab('family')">🏠 Гэр бүл</button>
+        <button class="tab-btn" onclick="showInfoTab('psych')">🧠 Сэтгэл зүй</button>
+        <button class="tab-btn" onclick="showInfoTab('cyber')">💻 Цахим</button>
+        <button class="tab-btn" onclick="showInfoTab('child')">👶 Хүүхэд</button>
+        <button class="tab-btn" onclick="showInfoTab('legal')">⚖️ Хуулийн</button>
+        <button class="tab-btn" onclick="showInfoTab('protect')">🛡️ Хамгаалал</button>
+      </div>
+
+      <div class="tab-content active" id="tab-family">
+        <div class="info-article">
+          <h3>🏠 Гэр бүлийн хүчирхийлэл</h3>
+          <p>Гэр бүлийн хүчирхийлэл нь хамтран амьдарч буй эсвэл хэзээ нэгэн цагт хамтрагч байсан хүмүүсийн хооронд явагдах хүч, хяналтын хэлбэрт бусдыгаа дарамтлах үйлдэл юм.</p>
+          <div class="warning-box">⚠️ Гэр бүлийн хүчирхийлэл нь зөвхөн бие махбодийн цохих биш — сэтгэл зүйн дарамт, санхүүгийн хяналт, тусгаарлал бүгд хүчирхийлэл юм.</div>
+          <h3 style="font-size:16px;margin:20px 0 10px">Таних шинжүүд:</h3>
+          <ul>
+            <li>Хамтрагч нь тантай доромжлол, гутаан доромжлолтой ярьдаг</li>
+            <li>Чиний найз нөхөд, гэр бүлтэй харилцахаас тусгаарладаг</li>
+            <li>Мөнгийг хянадаг, ажил хийхийг хориглодог</li>
+            <li>Бие махбодийн цохилт, лавлалт, шахалт</li>
+            <li>Чамаас хандлагаа өөрчлөхийг шаарддаг, зан авирыг хянадаг</li>
+          </ul>
+          <div class="tip-box">💡 Хэрэв та эдгээр шинжүүдийг харж байвал найдвартай хүнд, эсвэл доорх тусламжийн байгууллагад хандана уу.</div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-psych">
+        <div class="info-article">
+          <h3>🧠 Сэтгэл зүйн дарамт</h3>
+          <p>Сэтгэл зүйн дарамт нь бие махбодийн шарх үлдээдэггүй ч хүний сэтгэл санаа, итгэл үнэмшил, бие даасан байдалд гүнзгий хохирол учруулдаг.</p>
+          <h3 style="font-size:16px;margin:20px 0 10px">Хэлбэрүүд:</h3>
+          <ul>
+            <li><strong>Газлайтинг:</strong> Болсон зүйлийг үгүйсгэж, "чи буруу ойлгосон" гэж хэлдэг</li>
+            <li><strong>Доромжлол:</strong> Тасралтгүй чадвар, гадаад байдлыг нь шоолдог</li>
+            <li><strong>Заналхийлэл:</strong> Хор хөнөөл учруулах, гэр бүлийг нь дарамтлах гэж айлгадаг</li>
+            <li><strong>Тусгаарлал:</strong> Ар гэр, найзаас тусгаарлан ганцааранд нь байлгадаг</li>
+            <li><strong>Хяналт:</strong> Хөдөлгөөн, харилцаа холбоог хянадаг</li>
+          </ul>
+          <div class="warning-box">⚠️ Сэтгэл зүйн дарамт үргэлжлэх тусам хохирогч "Миний буруу байж магадгүй" гэсэн мэдрэмж рүү орно. Энэ бол дарамтлагчийн стратеги юм.</div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-cyber">
+        <div class="info-article">
+          <h3>💻 Цахим дарамт ба Цахим хамгаалалт</h3>
+          <p>Интернэт, утас, социал медиа орчинд явагдах дарамт, хяналт, заналхийлэл нь бодит амьдрал дахь хүчирхийлэлтэй адилхан хор хөнөөлтэй.</p>
+          <ul>
+            <li>Утас, е-мэйл, мессежийг нь хянадаг</li>
+            <li>Нууц зургийг зөвшөөрөлгүй тараадаг</li>
+            <li>Социал медиад доромжлол, заналхийллийн мессеж явуулдаг</li>
+            <li>Байршлыг нь дагадаг, спай апп суулгадаг</li>
+            <li>Хуурамч профайл ашиглан хяналт тавьдаг</li>
+          </ul>
+          <div class="tip-box">💡 Хэрэв утас, компьютерт тань гадны хэн нэгэн нэвтэрч болзошгүй бол нууц үгийг өөрчил, найдвартай хүнтэй зөвлөл. Цагдаад мэдэгдэж болно.</div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-child">
+        <div class="info-article">
+          <h3>👶 Хүүхдийн эсрэг хүчирхийллийн шинжүүд</h3>
+          <p>Хүүхэд хохирогч болж буйг нь та эрт илрүүлснээр их хохиролоос урьдчилан сэргийлж чадна. Дараах шинжүүдэд анхаар.</p>
+          <ul>
+            <li>Тайлбарлах боломжгүй гэмтэл, шарх</li>
+            <li>Гэнэтийн зан авирын өөрчлөлт — нийгмээс татгалзах, айдас</li>
+            <li>Тодорхой хүнтэй орохоос буюу ойртохоос айдаг</li>
+            <li>Насандаа тохирохгүй бэлгийн мэдлэгтэй байх</li>
+            <li>Нойр муу, зүүдэлдэг, цочирддог</li>
+            <li>Сургуулийн гүйцэтгэл огцом буурах</li>
+          </ul>
+          <div class="warning-box">⚠️ Хэрэв та хүүхэд хохирч байна гэж сэжиглэж байвал НЭРС буюу Хүүхэд хамгааллын албанд нэн даруй мэдэгдэнэ үү: <strong>102</strong></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-legal">
+        <div class="info-article">
+          <h3>⚖️ Монгол улсын хамааралтай хуулиуд</h3>
+          <p>Монгол улсад хүчирхийллийн эсрэг дараах хуулиуд хамгаалалт олгодог:</p>
+          <ul>
+            <li><strong>Гэр бүлийн хүчирхийллийн эсрэг тэмцэх тухай хууль (2016):</strong> Хохирогчийг хамгаалах арга хэмжээ, хамгаалах тушаал олгох эрхийг тогтоодог.</li>
+            <li><strong>Эрүүгийн хууль:</strong> Бие махбодид гэм хор учруулах, заналхийлэх, бэлгийн халдлага зэрэг үйлдэлд ял оногдуулдаг.</li>
+            <li><strong>Хүүхдийн эрхийг хамгаалах тухай хууль:</strong> Хүүхдийн бүхий л хэлбэрийн хүчирхийллийн эсрэг хамгаалалт олгодог.</li>
+          </ul>
+          <div class="tip-box">💡 <strong>Хамгаалах тушаал</strong> авах хүсэлтийг цагдаагийн газар эсвэл шүүхэд гаргаж болно. Энэ нь гарч явах, тодорхой хүнтэй харьцахыг хориглодог хууль ёсны баримт бичиг юм.</div>
+          <p>Хуулийн дэлгэрэнгүй зөвлөгөө авахыг хүсвэл <strong>Хүний эрхийн үндэсний комисс</strong> эсвэл <strong>Хуулийн туслалцааны нэгдсэн төв</strong>-д хандана уу.</p>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-protect">
+        <div class="info-article">
+          <h3>🛡️ Өөрийгөө хамгаалах практик зөвлөмж</h3>
+          <p>Аюулгүй байдлынхаа төлөвлөгөө гарга. Дараах алхмуудыг урьдчилан бэлдэж байх нь хамгийн чухал зүйл юм.</p>
+          <h3 style="font-size:15px;margin:18px 0 10px">Аюулгүй байдлын төлөвлөгөө:</h3>
+          <ul>
+            <li>Найдвартай хүнд (найз, ар гэр) өнөөгийн нөхцлөө ярь</li>
+            <li>Яаралтай гарах гэвэл хаашаа явахаа урьдчилан бодож бэлд</li>
+            <li>Паспорт, иргэний үнэмлэх, бусад чухал баримт бичгийн хуулбарыг аюулгүй газар хадгал</li>
+            <li>Яаралтай дугаарыг цээжил: 102, 107, 1800-1200</li>
+          </ul>
+          <h3 style="font-size:15px;margin:18px 0 10px">Нотлох баримт цуглуулах:</h3>
+          <ul>
+            <li>Гэмтлийн зурааг авч, огноо, цагийг тэмдэглэ</li>
+            <li>Дарамтлагчийн мессеж, е-мэйлийг хэвлэж хадгал</li>
+            <li>Гэрчийн нэр, холбоо барих дугаарыг бичиж авч яв</li>
+          </ul>
+          <div class="warning-box">⚠️ Хэрэв та нэн даруй аюулд байвал 102 руу залга эсвэл хамгийн ойр байгаа нийтийн газарт яв.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HELP ══ -->
+<section id="help">
+  <div class="container">
+    <div class="section-header">
+      <h2>Тусламж авах</h2>
+      <p>Та ганцаараа тэмцэх шаардлагагүй. Доорх байгууллагууд тантай хамт байна.</p>
+    </div>
+    <div class="help-wrap">
+      <div class="help-filters">
+        <button class="filter-btn active" onclick="filterHelp('all')">Бүгд</button>
+        <button class="filter-btn" onclick="filterHelp('hotline')">📞 Утасны тусламж</button>
+        <button class="filter-btn" onclick="filterHelp('shelter')">🏠 Хамгаалах байр</button>
+        <button class="filter-btn" onclick="filterHelp('legal')">⚖️ Хуулийн</button>
+        <button class="filter-btn" onclick="filterHelp('psych')">🧠 Сэтгэл зүй</button>
+      </div>
+      <div class="help-grid" id="help-grid">
+        <div class="help-card emergency" data-type="hotline">
+          <div class="org-type">📞 Яаралтай тусламж</div>
+          <h4>Цагдаагийн байгууллага</h4>
+          <div class="phone-big">102</div>
+          <div class="contact-row">🕐 24/7 ажилладаг</div>
+          <div class="contact-row">📍 Бүх нутаг дэвсгэрт</div>
+        </div>
+        <div class="help-card" data-type="hotline">
+          <div class="org-type">📞 Тусламжийн утас</div>
+          <h4>Гэр бүлийн хүчирхийллийн эсрэг үндэсний шугам</h4>
+          <div class="phone-big">1800-1200</div>
+          <div class="contact-row">🕐 24 цаг, долоо хоногийн 7 өдөр</div>
+          <div class="contact-row">🔒 Нууцлалтай, үнэгүй</div>
+        </div>
+        <div class="help-card" data-type="shelter">
+          <div class="org-type">🏠 Хамгаалах байр</div>
+          <h4>Эмэгтэйчүүдийн хамгаалах байр — Улаанбаатар</h4>
+          <div class="contact-row">📞 <a href="tel:70110033">7011-0033</a></div>
+          <div class="contact-row">📍 Улаанбаатар хот</div>
+          <div class="contact-row">💡 Богино хугацаагаар байрлах боломжтой</div>
+        </div>
+        <div class="help-card" data-type="psych">
+          <div class="org-type">🧠 Сэтгэл зүйн тусламж</div>
+          <h4>Сэтгэцийн эрүүл мэндийн үндэсний төв</h4>
+          <div class="contact-row">📞 <a href="tel:70110101">7011-0101</a></div>
+          <div class="contact-row">📍 СБД, Улаанбаатар</div>
+          <div class="contact-row">💡 Мэргэжлийн сэтгэл зүйч нартай уулзах боломжтой</div>
+        </div>
+        <div class="help-card" data-type="legal">
+          <div class="org-type">⚖️ Хуулийн тусламж</div>
+          <h4>Хуулийн туслалцааны нэгдсэн төв</h4>
+          <div class="contact-row">📞 <a href="tel:1800-1800">1800-1800</a></div>
+          <div class="contact-row">📍 Улаанбаатар болон аймгийн төвүүд</div>
+          <div class="contact-row">💡 Мэргэжлийн хуульчийн үнэгүй зөвлөгөө</div>
+        </div>
+        <div class="help-card" data-type="hotline">
+          <div class="org-type">👶 Хүүхдийн хамгаалал</div>
+          <h4>Хүүхдийн эрхийн үндэсний комисс (НЭРС)</h4>
+          <div class="phone-big" style="font-size:18px">7700-1122</div>
+          <div class="contact-row">📞 <a href="tel:77001122">7700-1122</a></div>
+          <div class="contact-row">🕐 Ажлын цагаар</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ASSESSMENT ══ -->
+<section id="assess">
+  <div class="container">
+    <div class="section-header">
+      <h2>Өөрийгөө үнэлэх</h2>
+      <p>Энэхүү аноним асуулга нь таний нөхцөл байдлыг ойлгоход туслах мэдээллийн зорилготой. Онош биш.</p>
+    </div>
+    <div class="assessment-wrap">
+      <div class="quiz-box" id="quiz-box">
+        <div class="quiz-disclaimer">
+          🔒 <strong>Нууцлал:</strong> Таны хариулт хадгалагдахгүй, бүртгэл шаардахгүй. Энэ асуулга нь таны нөхцлийг ойлгоход туслах мэдээллийн зорилготой бөгөөд мэргэжлийн онош биш болохыг анхаарна уу.
+        </div>
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quiz-progress" style="width:0%"></div>
+        </div>
+        <div id="quiz-content"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header">
+      <h2>Түгээмэл Асуулт &amp; Хариулт</h2>
+      <p>Хамгийн их асуудаг асуултуудын хариултыг энд олж болно.</p>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Хүчирхийллийг яаж таних вэ?
+            <span class="chevron">▼</span>
+          </div>
+          <div class="faq-a">Хүчирхийлэл нь зөвхөн бие махбодийн цохилт биш. Сэтгэл зүйн дарамт, доромжлол, нийгмээс тусгаарлах, санхүүгийн хяналт бүгд хүчирхийллийн хэлбэр юм. Хэрэв та ямар нэгэн харилцааны улмаас аймхайрладаг, дарагдсан мэдрэмж байнга мэдэрдэг бол Мэдээлэл хэсгийг уншаарай.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Найздаа яаж туслах вэ?
+            <span class="chevron">▼</span>
+          </div>
+          <div class="faq-a">Тэднийг буруутгалгүй сонс. "Чамд юу болоод байгааг мэдэхийг хүсэж байна" гэж хэл. Нотлоход ороод ирэлгүй дэмжлэг үзүүл. Хэрэв тэд аюулд байна гэж бодвол "1800-1200" дугаарыг тэдэнд өгч, тусламж хүсэхэд тусал. Шийдвэрийг тэдэнд үлдээ — зөвхөн дэмжлэг чухал.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Хаана хандах вэ? Цагдаад очих айдастай байна.
+            <span class="chevron">▼</span>
+          </div>
+          <div class="faq-a">Цагдаагаас гадна хэд хэдэн сонголт бий. "1800-1200" нь нууцлалтай тусламжийн утас бөгөөд мэргэжлийн зөвлөгч нар тантай ярилцаж, дараагийн алхмуудыг гаргахад тусална. Сэтгэл зүйн тусламж хүсэх нь мөн сайн эхлэл юм.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Миний мэдээлэл нууц байх уу?
+            <span class="chevron">▼</span>
+          </div>
+          <div class="faq-a">Тийм. Энэхүү сайт нь хэрэглэгчийн хувийн мэдээллийг цуглуулдаггүй. Өөрийгөө үнэлэх тест болон холбоо барих маягтад та хүсвэл нэр, е-мэйл оруулалгүй аноним хэлбэрээр илгээж болно.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Хамгаалах тушаал гэж юу вэ? Яаж авах вэ?
+            <span class="chevron">▼</span>
+          </div>
+          <div class="faq-a">Хамгаалах тушаал нь дарамтлагч тан руу ойртохыг хориглодог шүүхийн шийдвэр юм. Цагдаагийн газар эсвэл дүүргийн шүүхэд хандаж хүсэлт гаргаж болно. Яаралтай нөхцөлд цагдаагийн газар нэн даруй тушаал гаргах эрхтэй. Хуулийн тусламж авахыг хүсвэл 1800-1800 руу залга.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Хүүхдэд хүчирхийлэл үйлдэж байгааг харвал яах вэ?
+            <span class="chevron">▼</span>
+          </div>
+          <div class="faq-a">Нэн даруй 102 (цагдаа) эсвэл 7700-1122 (НЭРС) руу залга. Хүүхэд аюулд байна гэж сэжиглэвэл мэдээлэх нь таны хууль ёсны болон ёс суртахуунтай үүрэг юм. Буруу мэдэгдсэн ч хариуцлага тооцохгүй.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Орхиж явах хүслэй байхгүй / Хамтрагчаа хайрладаг. Энэ хэвийн үү?
+            <span class="chevron">▼</span>
+          </div>
+          <div class="faq-a">Маш олон хохирогч ийм мэдрэмж туулдаг — энэ бол хэвийн бөгөөд таны буруу биш. Хайр, айдас, эдийн засгийн хамааралт, хүүхэд зэрэг олон хүчин зүйл явахыг хүндрүүлдэг. Та явах эсэхийг шийдэхээс өмнө сэтгэл зүйч эсвэл зөвлөгчтэй ярилцах нь туслана: 1800-1200.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <h2>Холбоо барих &amp; Санал хүсэлт</h2>
+      <p>Аноним хэлбэрээр мессеж илгээх боломжтой. Нэр, е-мэйл оруулах шаардлагагүй.</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-grid">
+        <div class="form-box">
+          <h3>💬 Аноним мессеж</h3>
+          <div class="form-group">
+            <label>НЭР (заавал биш)</label>
+            <input type="text" placeholder="Нэрээ орхих боломжтой">
+          </div>
+          <div class="form-group">
+            <label>Э-МЭЙЛ (заавал биш)</label>
+            <input type="email" placeholder="Хариу авахыг хүсвэл оруулна уу">
+          </div>
+          <div class="form-group">
+            <label>ЗАХИАСНЫ ТӨРӨЛ</label>
+            <select>
+              <option>Мэдээлэл хүсэх</option>
+              <option>Санал болгох</option>
+              <option>Алдаа мэдэгдэх</option>
+              <option>Бусад</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>МЕССЕЖ *</label>
+            <textarea placeholder="Захиасаа энд бичнэ үү..."></textarea>
+          </div>
+          <p class="form-note">🔒 Таны мэдээлэл нууцлалтай хадгалагдана.</p>
+          <br>
+          <button class="btn btn-primary" onclick="submitFeedback(this)" style="width:100%">Илгээх →</button>
+          <div class="success-msg" id="feedback-success">
+            <span class="big">✅</span>
+            Мессеж амжилттай илгээгдлээ. Баярлалаа!
+          </div>
+        </div>
+        <div>
+          <div class="form-box" style="margin-bottom:18px">
+            <h3>⚡ Яаралтай тусламж</h3>
+            <p style="color:var(--text-soft);font-size:14px;margin-bottom:16px">Хэрэв та одоо аюулд байвал дараах дугаарт залга:</p>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <a href="tel:102" style="display:flex;align-items:center;gap:12px;background:var(--danger-light);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--danger)">
+                <span style="font-size:22px">🚨</span>
+                <div><div style="font-weight:700;font-size:18px">102</div><div style="font-size:12px">Цагдаагийн байгууллага</div></div>
+              </a>
+              <a href="tel:1800-1200" style="display:flex;align-items:center;gap:12px;background:var(--sky-light);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--sky)">
+                <span style="font-size:22px">📞</span>
+                <div><div style="font-weight:700;font-size:18px;color:var(--sage-dark)">1800-1200</div><div style="font-size:12px;color:var(--text-soft)">Хүчирхийллийн эсрэг</div></div>
+              </a>
+            </div>
+          </div>
+          <div class="form-box">
+            <h3>📋 Контент санал болгох</h3>
+            <p style="color:var(--text-soft);font-size:13.5px;margin-bottom:16px">Сайтад нэмж оруулах мэдээлэл, байгууллагын талаар санал байвал бидэнд мэдэгдэнэ үү.</p>
+            <div class="form-group">
+              <label>САНАЛ</label>
+              <textarea placeholder="Ямар мэдээлэл нэмэх хэрэгтэй гэж бодож байна вэ?" style="min-height:80px"></textarea>
+            </div>
+            <button class="btn btn-outline" onclick="submitFeedback(this)" style="width:100%">Илгээх</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ADMIN LOGIN ══ -->
+<section id="admin-login">
+  <div class="container">
+    <div class="admin-login">
+      <div style="text-align:center;margin-bottom:28px">
+        <div style="font-size:40px;margin-bottom:10px">🔐</div>
+        <h2 style="font-family:'Lora',serif;font-size:22px;color:var(--sage-dark)">Админ нэвтрэх</h2>
+        <p style="color:var(--text-muted);font-size:13px;margin-top:6px">Зөвшөөрөлтэй хэрэглэгчдэд зориулагдсан</p>
+      </div>
+      <div class="form-group">
+        <label>И-МЭЙЛ</label>
+        <input type="email" id="admin-email" placeholder="admin@example.mn">
+      </div>
+      <div class="form-group">
+        <label>НУУЦ ҮГ</label>
+        <input type="password" id="admin-pass" placeholder="••••••••">
+      </div>
+      <br>
+      <button class="btn btn-primary" onclick="adminLogin()" style="width:100%">Нэвтрэх →</button>
+      <p id="login-err" style="color:var(--danger);font-size:13px;text-align:center;margin-top:12px;display:none">Нэвтрэх нэр эсвэл нууц үг буруу байна.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ADMIN PANEL ══ -->
+<section id="admin-panel">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:32px 0 20px">
+      <h2 style="font-family:'Lora',serif;color:var(--sage-dark)">Админ самбар</h2>
+      <button class="btn btn-outline" onclick="adminLogout()">Гарах</button>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="num">24</div><div class="lbl">Нийтлэл</div></div>
+      <div class="stat-card"><div class="num">6</div><div class="lbl">Байгууллага</div></div>
+      <div class="stat-card"><div class="num">14</div><div class="lbl">FAQ</div></div>
+      <div class="stat-card"><div class="num">38</div><div class="lbl">Санал хүсэлт</div></div>
+    </div>
+    <div class="admin-panel">
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchAdmin('articles')">📄 Нийтлэлүүд</button>
+        <button class="admin-tab" onclick="switchAdmin('orgs')">🏢 Байгууллагууд</button>
+        <button class="admin-tab" onclick="switchAdmin('faqs')">❓ FAQ</button>
+        <button class="admin-tab" onclick="switchAdmin('feedback')">💬 Санал хүсэлт</button>
+        <button class="admin-tab" onclick="switchAdmin('users')">👤 Хэрэглэгчид</button>
+      </div>
+
+      <!-- Articles -->
+      <div class="admin-content active" id="admin-articles">
+        <div class="admin-add-form">
+          <h4>+ Шинэ нийтлэл нэмэх</h4>
+          <div class="inline-form">
+            <div><label style="font-size:11px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:5px">ГАРЧИГ</label><input type="text" class="form-group input" placeholder="Нийтлэлийн гарчиг" style="width:100%;padding:9px 12px;border:1.5px solid var(--warm-mid);border-radius:8px;background:var(--white);font-size:13px;font-family:'Montserrat',sans-serif;outline:none"></div>
+            <div><label style="font-size:11px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:5px">АНГИЛАЛ</label><select style="width:100%;padding:9px 12px;border:1.5px solid var(--warm-mid);border-radius:8px;background:var(--white);font-size:13px;font-family:'Montserrat',sans-serif;outline:none"><option>Гэр бүлийн хүчирхийлэл</option><option>Сэтгэл зүйн дарамт</option><option>Цахим дарамт</option><option>Хүүхдийн хамгаалал</option><option>Хуулийн</option></select></div>
+            <div class="full"><label style="font-size:11px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:5px">АГУУЛГА</label><textarea style="width:100%;padding:9px 12px;border:1.5px solid var(--warm-mid);border-radius:8px;background:var(--white);font-size:13px;font-family:'Montserrat',sans-serif;outline:none;min-height:80px;resize:vertical" placeholder="Нийтлэлийн агуулга..."></textarea></div>
+            <div><button class="btn btn-primary" onclick="alert('Хадгалагдлаа!')">Хадгалах</button></div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Гарчиг</th><th>Ангилал</th><th>Огноо</th><th>Төлөв</th><th>Үйлдэл</th></tr></thead>
+            <tbody>
+              <tr><td>Гэр бүлийн хүчирхийллийг таних арга</td><td>Гэр бүл</td><td>2025-01-10</td><td><span class="status-badge status-pub">Нийтлэгдсэн</span></td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Засах</button></td></tr>
+              <tr><td>Цахим дарамтаас хамгаалах зөвлөмж</td><td>Цахим</td><td>2025-01-08</td><td><span class="status-badge status-pub">Нийтлэгдсэн</span></td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Засах</button></td></tr>
+              <tr><td>Хүүхдийн шинж тэмдэгт хэрхэн хандах</td><td>Хүүхэд</td><td>2025-01-05</td><td><span class="status-badge status-draft">Ноорог</span></td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Засах</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Orgs -->
+      <div class="admin-content" id="admin-orgs">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Байгууллагын нэр</th><th>Утас</th><th>Хот</th><th>Төрөл</th><th>Үйлдэл</th></tr></thead>
+            <tbody>
+              <tr><td>Гэр бүлийн хүчирхийллийн эсрэг</td><td>1800-1200</td><td>Улаанбаатар</td><td>Тусламжийн утас</td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Засах</button></td></tr>
+              <tr><td>Эмэгтэйчүүдийн хамгаалах байр</td><td>7011-0033</td><td>Улаанбаатар</td><td>Хамгаалах байр</td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Засах</button></td></tr>
+              <tr><td>НЭРС — Хүүхдийн хамгаалал</td><td>7700-1122</td><td>Улаанбаатар</td><td>Хүүхдийн</td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Засах</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- FAQs -->
+      <div class="admin-content" id="admin-faqs">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Асуулт</th><th>Ангилал</th><th>Үйлдэл</th></tr></thead>
+            <tbody>
+              <tr><td>Хүчирхийллийг яаж таних вэ?</td><td>Ерөнхий</td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Засах</button></td></tr>
+              <tr><td>Найздаа яаж туслах вэ?</td><td>Ерөнхий</td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Засах</button></td></tr>
+              <tr><td>Хаана хандах вэ?</td><td>Тусламж</td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Засах</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="admin-content" id="admin-feedback">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Огноо</th><th>Нэр</th><th>Төрөл</th><th>Мессеж</th></tr></thead>
+            <tbody>
+              <tr><td>2025-01-11</td><td>Аноним</td><td>Мэдээлэл хүсэх</td><td>Хамгаалах байрны мэдээлэл дутуу байна...</td></tr>
+              <tr><td>2025-01-10</td><td>Б.Н.</td><td>Алдаа мэдэгдэх</td><td>Утасны дугаар буруу байна гэж санагдлаа</td></tr>
+              <tr><td>2025-01-09</td><td>Аноним</td><td>Санал болгох</td><td>Аймгийн байгууллагын жагсаалт нэмж оруулна уу</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Users -->
+      <div class="admin-content" id="admin-users">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Нэр</th><th>И-мэйл</th><th>Эрх</th><th>Нэмэгдсэн</th><th>Үйлдэл</th></tr></thead>
+            <tbody>
+              <tr><td>Б.Оюунчимэг</td><td>oyunchimeg@ngo.mn</td><td>Супер Админ</td><td>2024-09-01</td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Засах</button></td></tr>
+              <tr><td>Д.Батбаяр</td><td>batbayar@ngo.mn</td><td>Редактор</td><td>2024-10-15</td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Засах</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="emergency-line">🚨 Яаралтай: 102 • 1800-1200</div>
+  <p>Энэхүү сайт нь хүчирхийллийн хохирогчдод мэдээлэл, дэмжлэг үзүүлэх зорилготой. Хувийн мэдээллийг цуглуулдаггүй.</p>
+  <p style="margin-top:8px"><a href="#">Нууцлалын бодлого</a> · <a href="#" onclick="showSection('contact')">Холбоо барих</a></p>
+  <p style="margin-top:12px;opacity:0.5;font-size:12px">© 2025 Аюулгүй Байдал — Хүчирхийллийн эсрэг мэдлэг</p>
+</footer>
+
+<script>
+// ── Navigation ──
+function showSection(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + id.replace('-login','').replace('-panel',''));
+  if(navEl) navEl.classList.add('active');
+  closeMenu();
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='assess') initQuiz();
+}
+
+function toggleMenu() {
+  document.getElementById('nav-links').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('nav-links').classList.remove('open');
+}
+
+// ── Quick Exit ──
+function quickExit() {
+  window.location.replace('https://www.google.com/search?q=weather+ulaanbaatar');
+}
+
+// ── Emergency alert ──
+function callEmergency() {
+  alert('Яаралтай тусламжийн дугаарууд:\n\n🚨 102 — Цагдаа\n🔥 107 — Онцгой байдал\n📞 1800-1200 — Хүчирхийллийн эсрэг');
+}
+
+// ── Info tabs ──
+function showInfoTab(tab) {
+  showSection('info');
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const el = document.getElementById('tab-'+tab);
+  if(el) el.classList.add('active');
+  const tabs = ['family','psych','cyber','child','legal','protect'];
+  const idx = tabs.indexOf(tab);
+  const btns = document.querySelectorAll('.tab-btn');
+  if(btns[idx]) btns[idx].classList.add('active');
+  setTimeout(()=>{ window.scrollTo({top:200,behavior:'smooth'}); },80);
+}
+
+// ── Help filter ──
+function filterHelp(type) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.help-card').forEach(c => {
+    c.style.display = (type==='all' || c.dataset.type===type) ? '' : 'none';
+  });
+}
+
+// ── FAQ accordion ──
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+// ── Feedback ──
+function submitFeedback(btn) {
+  btn.textContent = '✓ Илгээгдлээ';
+  btn.disabled = true;
+  btn.style.background = 'var(--sage)';
+  setTimeout(()=>{ btn.textContent = 'Илгээх →'; btn.disabled = false; btn.style.background=''; }, 3000);
+}
+
+// ── Search ──
+function doSearch() {
+  const q = document.getElementById('hero-search-input').value.toLowerCase();
+  if(!q) return;
+  if(q.includes('тусламж') || q.includes('утас') || q.includes('байгууллага')) { showSection('help'); return; }
+  if(q.includes('тест') || q.includes('үнэлэх') || q.includes('эрсдэл')) { showSection('assess'); return; }
+  if(q.includes('асуулт') || q.includes('faq')) { showSection('faq'); return; }
+  showSection('info');
+}
+document.getElementById('hero-search-input').addEventListener('keydown', e => { if(e.key==='Enter') doSearch(); });
+
+// ── Admin ──
+function adminLogin() {
+  const e = document.getElementById('admin-email').value;
+  const p = document.getElementById('admin-pass').value;
+  if(e==='admin@admin.mn' && p==='admin123') {
+    showSection('admin-panel');
+  } else {
+    document.getElementById('login-err').style.display='block';
+  }
+}
+function adminLogout() { showSection('home'); }
+function switchAdmin(tab) {
+  document.querySelectorAll('.admin-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.admin-content').forEach(c=>c.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('admin-'+tab).classList.add('active');
+}
+
+// ── Quiz ──
+const questions = [
+  {
+    q: "Танай харилцаанд хамтрагч таны дуртай зүйл, найз нөхөдтэй харилцахаас тань таслах гэж оролддог уу?",
+    sub: "Нийгмийн тусгаарлал",
+    opts: ["Огт байдаггүй","Заримдаа","Байнга байдаг","Яг одоо ийм нөхцөлд байна"]
+  },
+  {
+    q: "Та хамтрагчийнхаа урьд нь ямар нэгэн зүйл хэлсэн эсвэл хийснийг нь үгүйсгэх, буруу ойлгосон гэж хэлэхийг мэдэрдэг үү?",
+    sub: "Газлайтинг",
+    opts: ["Огт байдаггүй","Заримдаа","Байнга байдаг","Ийм зүйл болсон"]
+  },
+  {
+    q: "Та хамтрагчийнхаа хажууд байхад аймхайрладаг эсвэл яаж үйлдэхээ мэдэхгүй болох мэдрэмж байдаг уу?",
+    sub: "Айдасны мэдрэмж",
+    opts: ["Огт байдаггүй","Заримдаа тийм","Тийм, байнга","Маш их"]
+  },
+  {
+    q: "Хамтрагч нь мөнгийг тань хянадаг, ажиллах, дуртай зүйлс хийхийг нь хориглодог уу?",
+    sub: "Санхүүгийн хяналт",
+    opts: ["Огт байдаггүй","Хааяа","Тийм, байнга","Бүрэн хянадаг"]
+  },
+  {
+    q: "Хамтрагч нь тантай доромжлол, гутаан доромжлолтой ханддаг уу?",
+    sub: "Сэтгэл зүйн дарамт",
+    opts: ["Огт байдаггүй","Маш ховор","Заримдаа","Байнга"]
+  }
+];
+
+let qIdx = 0;
+let answers = [];
+
+function initQuiz() {
+  qIdx = 0; answers = [];
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const box = document.getElementById('quiz-content');
+  const pct = (qIdx / questions.length) * 100;
+  document.getElementById('quiz-progress').style.width = pct + '%';
+
+  if(qIdx >= questions.length) {
+    showResult();
+    return;
+  }
+  const q = questions[qIdx];
+  box.innerHTML = `
+    <div class="quiz-question">${qIdx+1}/${questions.length}. ${q.q}</div>
+    <div class="quiz-sub">${q.sub}</div>
+    <div class="quiz-options" id="quiz-opts">
+      ${q.opts.map((o,i)=>`<button class="quiz-option" onclick="selectOpt(${i},this)">${o}</button>`).join('')}
+    </div>
+    <div class="quiz-nav">
+      <button class="btn btn-outline" onclick="prevQ()" ${qIdx===0?'disabled':''}>← Буцах</button>
+      <button class="btn btn-primary" id="next-btn" onclick="nextQ()" disabled>Дараах →</button>
+    </div>`;
+}
+
+function selectOpt(i, el) {
+  document.querySelectorAll('.quiz-option').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[qIdx] = i;
+  document.getElementById('next-btn').disabled = false;
+  if(qIdx === questions.length-1) document.getElementById('next-btn').textContent = 'Үр дүн харах →';
+}
+
+function nextQ() {
+  if(answers[qIdx] === undefined) return;
+  qIdx++;
+  renderQuestion();
+}
+function prevQ() {
+  if(qIdx>0) { qIdx--; renderQuestion(); }
+}
+
+function showResult() {
+  const score = answers.reduce((s,a)=>s+a,0);
+  const max = (questions.length-1)*3;
+  const pct = score/max;
+  let icon, title, desc, badge, badgeClass, action;
+
+  document.getElementById('quiz-progress').style.width = '100%';
+
+  if(pct < 0.33) {
+    icon='🌿'; title='Таны нөхцөл харьцангуй тогтвортой байна';
+    desc='Одоогийн хариултуудаас харахад таны харилцаанд томоохон аюулын шинж тэмдэг харагдахгүй байна. Гэсэн хэдий ч өөрийгөө ажиглаж байх нь хэзээ ч гэсэн чухал.';
+    badge='Бага эрсдэл'; badgeClass='badge-low';
+    action='<button class="btn btn-outline" onclick="showSection(\'info\')">Мэдээлэл унших →</button>';
+  } else if(pct < 0.66) {
+    icon='⚠️'; title='Зарим шинж тэмдэг байна — анхаарал хэрэгтэй';
+    desc='Таны хариултуудаас харахад зарим санаа зовоох шинж тэмдэг харагдаж байна. Найдвартай хүн эсвэл мэргэжлийн зөвлөгчтэй ярилцах нь зүйтэй.';
+    badge='Дунд эрсдэл'; badgeClass='badge-med';
+    action='<button class="btn btn-primary" onclick="showSection(\'help\')">Тусламж авах →</button>';
+  } else {
+    icon='🆘'; title='Та тусламж авах шаардлагатай байж болзошгүй';
+    desc='Таны хариултуудаас харахад хүчирхийллийн хэд хэдэн шинж тэмдэг байна. Та ганцаараа биш — мэргэжлийн тусламж авах нь маш чухал. Нэн даруй холбогдоно уу.';
+    badge='Өндөр эрсдэл'; badgeClass='badge-high';
+    action='<button class="btn btn-danger" onclick="callEmergency()">🚨 Яаралтай тусламж →</button><br><br><button class="btn btn-primary" onclick="showSection(\'help\')" style="margin-top:8px">Тусламжийн байгууллагууд →</button>';
+  }
+
+  document.getElementById('quiz-content').innerHTML = `
+    <div class="quiz-result">
+      <div class="result-icon">${icon}</div>
+      <div class="result-badge ${badgeClass}">${badge}</div>
+      <div class="result-title">${title}</div>
+      <div class="result-desc">${desc}</div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center">${action}</div>
+      <br>
+      <button class="btn btn-outline" onclick="initQuiz()" style="margin-top:8px">Дахин эхлэх</button>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:16px">⚠️ Энэ нь мэдээллийн зорилготой бөгөөд мэргэжлийн онош биш болохыг анхаарна уу.</p>
+    </div>`;
+}
+</script>
+</body>
+</html>
