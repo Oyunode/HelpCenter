@@ -53,7 +53,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 }
 .nav-brand-text .t1{font-size:13px;font-weight:800;color:var(--text);line-height:1.2}
 .nav-brand-text .t2{font-size:9px;font-weight:700;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase}
-/* desktop nav links */
 .nav-links{display:flex;align-items:center;gap:2px;flex:1;justify-content:center}
 .nav-link{
   padding:7px 11px;border-radius:8px;font-size:12.5px;font-weight:600;
@@ -78,7 +77,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   transition:all 0.2s;white-space:nowrap;
 }
 .nav-emg:hover{transform:translateY(-1px)}
-/* hamburger */
 .hamburger{
   display:none;flex-direction:column;justify-content:center;gap:5px;
   cursor:pointer;background:none;border:none;padding:8px;
@@ -179,7 +177,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   padding:50px 20px 60px;
   display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
 }
-/* hero left */
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
   background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
@@ -233,7 +230,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 }
 .hstat .num{font-size:22px;font-weight:900;color:#2dd4bf;margin-bottom:3px}
 .hstat .lbl{font-size:10.5px;color:rgba(255,255,255,0.55);font-weight:600;line-height:1.3}
-/* hero right */
 .hero-right{display:flex;flex-direction:column;gap:12px}
 .hero-card{
   background:rgba(255,255,255,0.1);
@@ -274,7 +270,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .sec-hdr.center{text-align:center}
 .sec-hdr.center .sec-desc{margin:0 auto}
 
-/* ── INFO SECTION (white bg) ── */
+/* ── INFO SECTION ── */
 .info-section{background:#fff}
 .info-wrap{padding:60px 20px;max-width:1100px;margin:0 auto}
 
@@ -326,7 +322,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   border-bottom:1px solid var(--border2);
   padding-bottom:14px;z-index:10;
 }
-/* modal drag handle */
 .modal-handle{
   width:40px;height:4px;background:#e2e8f0;
   border-radius:2px;margin:12px auto 0;
@@ -375,7 +370,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 .hl-number-default{color:var(--teal)}
 .hl-detail{font-size:12px;color:var(--text2);display:flex;align-items:center;gap:5px;margin-bottom:3px}
 .hl-detail a{color:var(--teal);font-weight:600;text-decoration:none}
-/* mobile tap-to-call */
 .hl-call-btn{
   display:none;width:100%;margin-top:12px;
   background:linear-gradient(135deg,var(--teal),#0891b2);
@@ -445,7 +439,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
   font-size:13.5px;color:var(--text2);
   padding:0 18px;line-height:1.8;
 }
-.faq-item.open .faq-a{max-height:300px;padding:0 18px 16px}
+.faq-item.open .faq-a{max-height:400px;padding:0 18px 16px}
 
 /* ── CONTACT ── */
 .contact-section{background:#fff}
@@ -562,7 +556,7 @@ tr:hover td{background:#fafafa}
 .qs-title{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:3px}
 .qs-desc{font-size:12px;color:var(--text2);line-height:1.55}
 
-/* ── BOTTOM NAV (mobile only) ── */
+/* ── BOTTOM NAV ── */
 .bottom-nav{
   display:none;position:fixed;bottom:0;left:0;right:0;z-index:900;
   background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);
@@ -586,7 +580,7 @@ tr:hover td{background:#fafafa}
 .bnav-emg{color:var(--red) !important}
 .bnav-emg.active{color:var(--red) !important}
 
-/* ── DESKTOP: ≥ 901px ── */
+/* ── DESKTOP ── */
 @media(min-width:901px){
   body{padding-top:var(--nav-h)}
   .emg-bar{position:fixed;top:0;left:0;right:0;z-index:1001}
@@ -603,7 +597,7 @@ tr:hover td{background:#fafafa}
   .modal-handle{display:none}
 }
 
-/* ── TABLET: 601–900px ── */
+/* ── TABLET ── */
 @media(max-width:900px){
   body{padding-bottom:70px}
   .nav-links{display:none}
@@ -611,30 +605,22 @@ tr:hover td{background:#fafafa}
   .hamburger{display:flex}
   .bottom-nav{display:block}
   .page{padding-top:var(--nav-h)}
-  /* hero */
   .hero-inner{grid-template-columns:1fr;gap:32px;padding:40px 20px 50px}
   .hero-right{display:none}
   .hero-stats{grid-template-columns:repeat(3,1fr)}
-  /* topic */
   .topic-grid{grid-template-columns:1fr 1fr}
-  /* contact */
   .contact-grid{grid-template-columns:1fr}
-  /* admin */
   .adm-stats{grid-template-columns:repeat(2,1fr)}
-  /* quick strip */
   .quick-strip-inner{grid-template-columns:1fr}
-  /* show call buttons */
   .hl-call-btn{display:block}
 }
 
-/* ── MOBILE: ≤ 600px ── */
+/* ── MOBILE ── */
 @media(max-width:600px){
   :root{--nav-h:56px}
   .nav-brand-text .t1{font-size:12px}
   .nav-brand-text .t2{display:none}
-  /* emg bar compact */
   .emg-bar{font-size:10.5px;gap:6px;padding:6px 12px}
-  /* hero */
   .hero-title{font-size:clamp(26px,7vw,36px)}
   .hero-desc{font-size:14px}
   .hero-btns{flex-direction:column}
@@ -643,44 +629,31 @@ tr:hover td{background:#fafafa}
   .hstat{display:flex;align-items:center;gap:12px;text-align:left;padding:12px 14px}
   .hstat .num{font-size:20px;margin:0}
   .hstat .lbl{font-size:11px}
-  /* sections */
   .section,.info-wrap{padding:40px 16px}
   .sec-hdr{margin-bottom:24px}
-  /* topics */
   .topic-grid{grid-template-columns:1fr}
   .topic-card{padding:18px}
-  /* admin */
   .adm-stats{grid-template-columns:1fr 1fr}
   .ifrm{grid-template-columns:1fr}
   .ifrm .full{grid-column:1}
   .adm-panel-wrap{padding:16px 14px 80px}
-  /* quick strip */
   .quick-strip-inner{gap:14px}
-  /* footer */
   .footer{flex-direction:column;text-align:center;gap:12px}
   .footer-emg{justify-content:center}
-  /* quiz */
   .quiz-box{padding:20px 16px}
-  /* contact */
-  .section{padding:40px 16px}
-  /* adm login */
   .adm-login{padding:30px 16px 60px}
-  /* bottom nav labels */
   .bnav-item{font-size:9px;padding:5px 6px}
   .bnav-item .bi{font-size:18px}
-  /* cta */
   .cta-banner{padding:44px 16px}
   .cta-banner h2{font-size:22px}
 }
 
-/* ── XS: ≤ 380px ── */
 @media(max-width:380px){
   .hero-title{font-size:24px}
   .bnav-items{gap:0}
   .hero-stats{grid-template-columns:1fr}
 }
 
-/* safe area for iOS notch */
 @supports(padding:max(0px)){
   .navbar{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
   .bottom-nav{padding-bottom:max(8px,env(safe-area-inset-bottom))}
@@ -744,7 +717,7 @@ tr:hover td{background:#fafafa}
   </div>
 </div>
 
-<!-- BOTTOM NAV (mobile) -->
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
   <div class="bnav-items">
     <button class="bnav-item active" id="bn-home" onclick="go('home',null,'home')"><div class="bi">🏠</div><span>Нүүр</span></button>
@@ -797,7 +770,7 @@ tr:hover td{background:#fafafa}
     <div class="quick-strip-inner">
       <div class="qs-item"><div class="qs-icon">🔒</div><div><div class="qs-title">Нууцлал хамгаалагдсан</div><div class="qs-desc">Таны мэдээлэл ямар ч байгууллагад дамждаггүй.</div></div></div>
       <div class="qs-item"><div class="qs-icon">🌐</div><div><div class="qs-title">Боловсролын зорилго</div><div class="qs-desc">Хүчирхийллийг таниулж, урьдчилан сэргийлэх мэдлэг олгоно.</div></div></div>
-      <div class="qs-item"><div class="qs-icon">🚨</div><div><div class="qs-title">Яаралтай тусламж</div><div class="qs-desc">Аюулд байвал <strong>102</strong>  руу залгаарай.</div></div></div>
+      <div class="qs-item"><div class="qs-icon">🚨</div><div><div class="qs-title">Яаралтай тусламж</div><div class="qs-desc">Аюулд байвал <strong>102</strong> руу залгаарай.</div></div></div>
     </div>
   </div>
   <div class="info-section">
@@ -831,7 +804,7 @@ tr:hover td{background:#fafafa}
   <footer class="footer">
     <div class="footer-brand"><div class="footer-logo">А</div><div><div class="footer-name">Аюулгүй Байдал</div><div class="footer-sub">A-324 Групп © 2026</div></div></div>
     <div class="footer-text">Хүчирхийллийн эсрэг мэдлэг олгох платформ</div>
-    <div class="footer-emg"><a href="tel:102">📞 102</a><a href="tel:102"></a></div>
+    <div class="footer-emg"><a href="tel:102">📞 102</a></div>
   </footer>
 </div>
 
@@ -856,11 +829,13 @@ tr:hover td{background:#fafafa}
     <div class="section">
       <div class="sec-hdr"><div class="sec-label">Тусламж авах</div><h2 class="sec-title">Та <span>ганцаараа биш</span></h2><p class="sec-desc">Дор дурдсан байгууллагууд танд туслахад бэлэн байна.</p></div>
       <div class="hotlines">
-        <div class="hl-card emg"><div class="hl-tag">Яаралтай тусламж</div><h4>Цагдаагийн байгууллага</h4><div class="hl-number">102</div><div class="hl-detail"></div><div class="hl-detail"></div><a href="tel:102" class="hl-call-btn">📞 102 Залгах</a></div>
-        <div class="hl-card emg"><div class="hl-tag">Гэр бүлийн хүчирхийлэл</div><h4>Гэр бүлийн хүчирхийллийн талаар зөвлөгөө, мэдээлэл</h4><div class="hl-number">107</div><div class="hl-detail"></div><a href="tel:107" class="hl-call-btn">📞 107 Залгах</a></div>
-        <div class="hl-card grn"><div class="hl-tag">Хүчирхийллийн эсрэг үндэсний төв ТББ</div><h4></h4><div class="hl-number">9649-0505</div><div class="hl-detail"></div><div class="hl-detail"></div><a href="tel:9649-0505" class="hl-call-btn">📞 9649-0505 Залгах</a></div>
-        <div class="hl-card emg"><div class="hl-tag">Хүүхдийн хамгаалал</div><h4>Хүүхдийн тусламжийн утас</h4><div class="hl-number">108</div><div class="hl-detail"></div><a href="tel:108" class="hl-call-btn">📞 108 Залгах</a></div>
-  
+        <div class="hl-card emg"><div class="hl-tag">Яаралтай тусламж</div><h4>Цагдаагийн байгууллага</h4><div class="hl-number">102</div><a href="tel:102" class="hl-call-btn">📞 102 Залгах</a></div>
+        <div class="hl-card emg"><div class="hl-tag">Гэр бүлийн хүчирхийлэл</div><h4>Гэр бүлийн хүчирхийллийн талаар зөвлөгөө, мэдээлэл</h4><div class="hl-number">107</div><a href="tel:107" class="hl-call-btn">📞 107 Залгах</a></div>
+        <div class="hl-card grn"><div class="hl-tag">Хүчирхийллийн эсрэг үндэсний төв ТББ</div><h4>Хүчирхийллийн эсрэг үндэсний төв</h4><div class="hl-number">9649-0505</div><a href="tel:96490505" class="hl-call-btn">📞 9649-0505 Залгах</a></div>
+        <div class="hl-card emg"><div class="hl-tag">Хүүхдийн хамгаалал</div><h4>Хүүхдийн тусламжийн утас</h4><div class="hl-number">108</div><a href="tel:108" class="hl-call-btn">📞 108 Залгах</a></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ══ ASSESS ══ -->
@@ -868,11 +843,13 @@ tr:hover td{background:#fafafa}
   <div class="assess-section">
     <div class="section">
       <div class="sec-hdr center"><div class="sec-label">Аноним үнэлгээ</div><h2 class="sec-title">Өөрийгөө <span>үнэлэх</span></h2><p class="sec-desc">Нууцлалтай, хадгалагддаггүй асуулга. Мэдээллийн зорилготой.</p></div>
-      <div class="quiz-wrap"><div class="quiz-box">
-        <div class="qdisc">🔒 <strong>Нууцлал:</strong> Таны хариулт хадгалагдахгүй, бүртгэл шаардахгүй. Мэдээллийн зорилготой.</div>
-        <div class="pbar"><div class="pfill" id="qprog" style="width:0%"></div></div>
-        <div id="qcontent"></div>
-      </div></div>
+      <div class="quiz-wrap">
+        <div class="quiz-box">
+          <div class="qdisc">🔒 <strong>Нууцлал:</strong> Таны хариулт хадгалагдахгүй, бүртгэл шаардахгүй. Мэдээллийн зорилготой.</div>
+          <div class="pbar"><div class="pfill" id="qprog" style="width:0%"></div></div>
+          <div id="qcontent"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -883,13 +860,42 @@ tr:hover td{background:#fafafa}
     <div class="section">
       <div class="sec-hdr center"><div class="sec-label">Нийтлэг асуулт</div><h2 class="sec-title">Асуулт &amp; <span>Хариулт</span></h2><p class="sec-desc">Хамгийн их асуудаг асуултуудын хариултыг энд олж болно.</p></div>
       <div class="faq-wrap">
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Хүчирхийллийг яаж таних вэ? <span class="fchev">▼</span></div><div class="faq-a">Хүчирхийлэл нь зөвхөн бие махбодийн цохилт биш. Сэтгэл зүйн дарамт, доромжлол, нийгмээс тусгаарлах, санхүүгийн хяналт бүгд хүчирхийллийн хэлбэр юм.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Найздаа яаж туслах вэ? <span class="fchev">▼</span></div><div class="faq-a">Тэднийг буруутгалгүй сонс. "Чамд юу болоод байгааг мэдэхийг хүсэж байна" гэж хэл. Шийдвэрийг тэдэнд үлдээ — зөвхөн дэмжлэг чухал. </div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Цагдаад очих айдастай байна. Юу хийх вэ? <span class="fchev">▼</span></div><div class="faq-a"></div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Миний мэдээлэл нууц байх уу? <span class="fchev">▼</span></div><div class="faq-a">Тийм. Энэхүү сайт нь хэрэглэгчийн хувийн мэдээллийг цуглуулдаггүй. Холбоо барих маягтад та нэр, е-мэйл оруулалгүй аноним хэлбэрээр илгээж болно.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Хамгаалах тушаал яаж авах вэ? <span class="fchev">▼</span></div><div class="faq-a">Хамгаалах тушаал нь дарамтлагч тан руу ойртохыг хориглодог шүүхийн шийдвэр юм. Цагдаагийн газар эсвэл дүүргийн шүүхэд хандаж хүсэлт гаргаж болно. </div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Хүүхдэд хүчирхийлэл байгааг харвал яах вэ? <span class="fchev">▼</span></div><div class="faq-a">Нэн даруй 108 руу залга. Хүүхэд аюулд байна гэж сэжиглэвэл мэдээлэх нь таны хууль ёсны болон ёс суртахуунтай үүрэг юм.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Хамтрагчаа хайрладаг, гэхдээ айдастай байна. <span class="fchev">▼</span></div><div class="faq-a">Маш олон хохирогч ийм мэдрэмж туулдаг — энэ бол хэвийн бөгөөд таны буруу биш. Сэтгэл зүйч эсвэл зөвлөгчтэй ярилцах нь туслана</div></div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Хүчирхийллийг яаж таних вэ? <span class="fchev">▼</span></div>
+          <div class="faq-a">Хүчирхийлэл нь зөвхөн бие махбодийн цохилт биш. Сэтгэл зүйн дарамт, доромжлол, нийгмээс тусгаарлах, санхүүгийн хяналт бүгд хүчирхийллийн хэлбэр юм. Хэрэв хамтрагч тань танд айдас төрүүлдэг, доромжилдог, тусгаарладаг бол эдгээр нь анхааруулах шинж тэмдгүүд юм.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Найздаа яаж туслах вэ? <span class="fchev">▼</span></div>
+          <div class="faq-a">Тэднийг буруутгалгүй сонс. "Чамд юу болоод байгааг мэдэхийг хүсэж байна" гэж хэл. Шийдвэрийг тэдэнд үлдээ — зөвхөн дэмжлэг чухал. Тэдэнд байгууллагуудын мэдээллийг хуваалцаж, хэрэгтэй үед хамт байхаа амал.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Цагдаад очих айдастай байна. Юу хийх вэ? <span class="fchev">▼</span></div>
+          <div class="faq-a">Цагдаагийн газарт очих нь эхний алхам байх шаардлагагүй. Эхлээд 107 утсаар зөвлөгөө авах, эсвэл найдвартай хүнтэй ярилцаж болно. Хэрэв шууд аюулд байгаа бол 102 руу залга. Танд мэргэжлийн зөвлөх тусалж, хаашаа хандахаа заана.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Миний мэдээлэл нууц байх уу? <span class="fchev">▼</span></div>
+          <div class="faq-a">Тийм. Энэхүү сайт нь хэрэглэгчийн хувийн мэдээллийг цуглуулдаггүй. Холбоо барих маягтад та нэр, е-мэйл оруулалгүй аноним хэлбэрээр илгээж болно. Үнэлгээний асуулгын хариулт ч хадгалагддаггүй.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Хамгаалах тушаал яаж авах вэ? <span class="fchev">▼</span></div>
+          <div class="faq-a">Хамгаалах тушаал нь дарамтлагч тан руу ойртохыг хориглодог шүүхийн шийдвэр юм. Цагдаагийн газар эсвэл дүүргийн шүүхэд хандаж хүсэлт гаргаж болно. Мэргэжлийн хуулийн туслалцаа авахыг хүсвэл 1800-1800 дугаарт залга.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Хүүхдэд хүчирхийлэл байгааг харвал яах вэ? <span class="fchev">▼</span></div>
+          <div class="faq-a">Нэн даруй 108 руу залга. Хүүхэд аюулд байна гэж сэжиглэвэл мэдээлэх нь таны хууль ёсны болон ёс суртахуунтай үүрэг юм. Хүүхдийн хамгааллын мэргэжилтнүүд цаашдын алхмуудыг таньд заана.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Хамтрагчаа хайрладаг, гэхдээ айдастай байна. <span class="fchev">▼</span></div>
+          <div class="faq-a">Маш олон хохирогч ийм мэдрэмж туулдаг — энэ бол хэвийн бөгөөд таны буруу биш. Хайр ба айдас хоёр зэрэгцэн байж болно. Сэтгэл зүйч эсвэл зөвлөгчтэй ярилцах нь туслана. 107 дугаарт залгаж нууцаар зөвлөгөө авах боломжтой.</div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -917,7 +923,8 @@ tr:hover td{background:#fafafa}
           <div class="cinfo-card" style="margin-bottom:14px">
             <h3>🚨 Яаралтай дугаарууд</h3>
             <a href="tel:102" class="emt-link emt-red"><span style="font-size:20px">🚨</span><div><div class="emt-num">102</div><div class="emt-lbl">Цагдаагийн байгууллага</div></div></a>
-        
+            <a href="tel:107" class="emt-link emt-teal"><span style="font-size:20px">📞</span><div><div class="emt-num">107</div><div class="emt-lbl">Гэр бүлийн хүчирхийллийн шугам</div></div></a>
+            <a href="tel:108" class="emt-link emt-blue"><span style="font-size:20px">👶</span><div><div class="emt-num">108</div><div class="emt-lbl">Хүүхдийн тусламжийн утас</div></div></a>
           </div>
           <div class="cinfo-card">
             <h3>💡 А-324 Групп</h3>
@@ -990,11 +997,9 @@ tr:hover td{background:#fafafa}
       <div class="tcard"><div class="tcard-scroll"><table>
         <thead><tr><th>Байгууллагын нэр</th><th>Утас</th><th>Хот</th><th>Төрөл</th><th>Үйлдэл</th></tr></thead>
         <tbody>
-          <tr><td>Гэр бүлийн хүчирхийллийн эсрэг шугам</td><td>1800-1200</td><td>УБ</td><td>Тусламжийн утас</td><td><button class="act-btn">Засах</button></td></tr>
-          <tr><td>Эмэгтэйчүүдийн хамгаалах байр</td><td>7011-0033</td><td>УБ</td><td>Хамгаалах байр</td><td><button class="act-btn">Засах</button></td></tr>
-          <tr><td>Сэтгэцийн эрүүл мэндийн үндэсний төв</td><td>7011-0101</td><td>УБ</td><td>Сэтгэл зүй</td><td><button class="act-btn">Засах</button></td></tr>
-          <tr><td>Хуулийн туслалцааны нэгдсэн төв</td><td>1800-1800</td><td>УБ+аймаг</td><td>Хуулийн</td><td><button class="act-btn">Засах</button></td></tr>
-          <tr><td>Хүүхдийн хамгаалал (НЭРС)</td><td>7700-1122</td><td>УБ</td><td>Хүүхдийн</td><td><button class="act-btn">Засах</button></td></tr>
+          <tr><td>Гэр бүлийн хүчирхийллийн эсрэг шугам</td><td>107</td><td>УБ</td><td>Тусламжийн утас</td><td><button class="act-btn">Засах</button></td></tr>
+          <tr><td>Хүчирхийллийн эсрэг үндэсний төв ТББ</td><td>9649-0505</td><td>УБ</td><td>ТББ</td><td><button class="act-btn">Засах</button></td></tr>
+          <tr><td>Хүүхдийн хамгаалал</td><td>108</td><td>УБ</td><td>Хүүхдийн</td><td><button class="act-btn">Засах</button></td></tr>
           <tr><td>Цагдаагийн байгууллага</td><td>102</td><td>Бүх нутаг</td><td>Яаралтай</td><td><button class="act-btn">Засах</button></td></tr>
         </tbody>
       </table></div></div>
@@ -1005,10 +1010,11 @@ tr:hover td{background:#fafafa}
         <tbody>
           <tr><td>Хүчирхийллийг яаж таних вэ?</td><td>Ерөнхий</td><td><button class="act-btn">Засах</button><button class="act-btn del" onclick="this.closest('tr').remove()">Устгах</button></td></tr>
           <tr><td>Найздаа яаж туслах вэ?</td><td>Ерөнхий</td><td><button class="act-btn">Засах</button><button class="act-btn del" onclick="this.closest('tr').remove()">Устгах</button></td></tr>
-          <tr><td>Хаана хандах вэ?</td><td>Тусламж</td><td><button class="act-btn">Засах</button><button class="act-btn del" onclick="this.closest('tr').remove()">Устгах</button></td></tr>
+          <tr><td>Цагдаад очих айдастай байна.</td><td>Тусламж</td><td><button class="act-btn">Засах</button><button class="act-btn del" onclick="this.closest('tr').remove()">Устгах</button></td></tr>
           <tr><td>Миний мэдээлэл нууц байх уу?</td><td>Нууцлал</td><td><button class="act-btn">Засах</button><button class="act-btn del" onclick="this.closest('tr').remove()">Устгах</button></td></tr>
           <tr><td>Хамгаалах тушаал яаж авах вэ?</td><td>Хуулийн</td><td><button class="act-btn">Засах</button><button class="act-btn del" onclick="this.closest('tr').remove()">Устгах</button></td></tr>
           <tr><td>Хүүхдэд хүчирхийлэл байгааг харвал?</td><td>Хүүхэд</td><td><button class="act-btn">Засах</button><button class="act-btn del" onclick="this.closest('tr').remove()">Устгах</button></td></tr>
+          <tr><td>Хамтрагчаа хайрладаг, гэхдээ айдастай байна.</td><td>Сэтгэл зүй</td><td><button class="act-btn">Засах</button><button class="act-btn del" onclick="this.closest('tr').remove()">Устгах</button></td></tr>
         </tbody>
       </table></div></div>
     </div>
@@ -1027,12 +1033,12 @@ tr:hover td{background:#fafafa}
 <script>
 /* ── MODAL DATA ── */
 const INFO={
-  family:{title:'🏠 Гэр бүлийн хүчирхийлэл',body:`<p>Гэр бүлийн хүчирхийлэл нь хамтран амьдарч буй эсвэл хэзээ нэгэн цагт хамтрагч байсан хүмүүсийн хооронд явагдах хүч, хяналтын хэлбэрт бусдыгаа дарамтлах үйлдэл юм.</p><div class="abox abox-warn">⚠️ Гэр бүлийн хүчирхийлэл нь зөвхөн бие махбодийн цохих биш — сэтгэл зүйн дарамт, санхүүгийн хяналт, тусгаарлал бүгд хүчирхийлэл юм.</div><h4>Таних шинжүүд:</h4><ul><li>Хамтрагч нь тантай доромжлол, гутаан доромжлолтой ярьдаг</li><li>Найз нөхөд, гэр бүлтэй харилцахаас тусгаарладаг</li><li>Мөнгийг хянадаг, ажил хийхийг хориглодог</li><li>Бие махбодийн цохилт, шахалт, заналхийлэл</li><li>Чамаас хандлагаа байнга өөрчлөхийг шаарддаг</li></ul><div class="abox abox-info">💡 Хэрэв та эдгээр шинжүүдийг харж байвал 1800-1200 дугаарт хандана уу.</div>`},
+  family:{title:'🏠 Гэр бүлийн хүчирхийлэл',body:`<p>Гэр бүлийн хүчирхийлэл нь хамтран амьдарч буй эсвэл хэзээ нэгэн цагт хамтрагч байсан хүмүүсийн хооронд явагдах хүч, хяналтын хэлбэрт бусдыгаа дарамтлах үйлдэл юм.</p><div class="abox abox-warn">⚠️ Гэр бүлийн хүчирхийлэл нь зөвхөн бие махбодийн цохих биш — сэтгэл зүйн дарамт, санхүүгийн хяналт, тусгаарлал бүгд хүчирхийлэл юм.</div><h4>Таних шинжүүд:</h4><ul><li>Хамтрагч нь тантай доромжлол, гутаан доромжлолтой ярьдаг</li><li>Найз нөхөд, гэр бүлтэй харилцахаас тусгаарладаг</li><li>Мөнгийг хянадаг, ажил хийхийг хориглодог</li><li>Бие махбодийн цохилт, шахалт, заналхийлэл</li><li>Чамаас хандлагаа байнга өөрчлөхийг шаарддаг</li></ul><div class="abox abox-info">💡 Хэрэв та эдгээр шинжүүдийг харж байвал 107 дугаарт хандана уу.</div>`},
   psych:{title:'🧠 Сэтгэл зүйн дарамт',body:`<p>Сэтгэл зүйн дарамт нь бие махбодийн шарх үлдээдэггүй ч хүний сэтгэл санаа, итгэл үнэмшил, бие даасан байдалд гүнзгий хохирол учруулдаг.</p><h4>Хэлбэрүүд:</h4><ul><li><strong>Газлайтинг:</strong> Болсон зүйлийг үгүйсгэж "чи буруу ойлгосон" гэж хэлдэг</li><li><strong>Доромжлол:</strong> Тасралтгүй чадвар, гадаад байдлыг нь шоолдог</li><li><strong>Заналхийлэл:</strong> Хор хөнөөл учруулах гэж айлгадаг</li><li><strong>Тусгаарлал:</strong> Ар гэр, найзаас тусгаарлан ганцааранд нь байлгадаг</li><li><strong>Хяналт:</strong> Хөдөлгөөн, харилцаа холбоог хянадаг</li></ul><div class="abox abox-warn">⚠️ Сэтгэл зүйн дарамт үргэлжлэх тусам хохирогч "Миний буруу байж магадгүй" гэсэн мэдрэмж рүү орно. Энэ бол дарамтлагчийн стратеги юм.</div>`},
   cyber:{title:'💻 Цахим дарамт',body:`<p>Интернэт, утас, социал медиа орчинд явагдах дарамт, хяналт, заналхийлэл нь бодит амьдрал дахь хүчирхийлэлтэй адилхан хор хөнөөлтэй.</p><h4>Шинж тэмдгүүд:</h4><ul><li>Утас, е-мэйл, мессежийг нь хянадаг</li><li>Нууц зургийг зөвшөөрөлгүй тараадаг</li><li>Социал медиад доромжлол, заналхийллийн мессеж явуулдаг</li><li>Байршлыг нь дагадаг, спай апп суулгадаг</li><li>Хуурамч профайл ашиглан хяналт тавьдаг</li></ul><div class="abox abox-info">💡 Утас, компьютерт тань гадны хэн нэгэн нэвтэрч болзошгүй бол нууц үгийг өөрчил. Цагдаад мэдэгд: <strong>102</strong></div>`},
-  child:{title:'👶 Хүүхдийн хамгаалал',body:`<p>Хүүхэд хохирогч болж буйг нь та эрт илрүүлснээр их хохиролоос урьдчилан сэргийлж чадна.</p><h4>Шинж тэмдгүүд:</h4><ul><li>Тайлбарлах боломжгүй гэмтэл, шарх</li><li>Гэнэтийн зан авирын өөрчлөлт — нийгмээс татгалзах, айдас</li><li>Тодорхой хүнтэй орохоос эсвэл ойртохоос айдаг</li><li>Насандаа тохирохгүй бэлгийн мэдлэгтэй байх</li><li>Нойр муу, зүүдэлдэг, цочирддог</li><li>Сургуулийн гүйцэтгэл огцом буурах</li></ul><div class="abox abox-warn">⚠️ Хүүхэд хохирч байна гэж сэжиглэвэл нэн даруй: <strong>102</strong> эсвэл НЭРС: <strong>7700-1122</strong></div>`},
-  legal:{title:'⚖️ Хуулийн эрх ба Хамгаалал',body:`<p>Монгол улсад хүчирхийллийн эсрэг дараах хуулиуд хамгаалалт олгодог:</p><ul><li><strong>Гэр бүлийн хүчирхийллийн эсрэг тэмцэх тухай хууль (2016):</strong> Хохирогчийг хамгаалах арга хэмжээ, хамгаалах тушаал олгох эрхийг тогтоодог.</li><li><strong>Эрүүгийн хууль:</strong> Бие махбодид гэм хор учруулах, заналхийлэх, бэлгийн халдлага зэрэг үйлдэлд ял оногдуулдаг.</li><li><strong>Хүүхдийн эрхийг хамгаалах тухай хууль:</strong> Хүүхдийн бүхий л хэлбэрийн хүчирхийллийн эсрэг хамгаалалт олгодог.</li></ul><div class="abox abox-info">💡 <strong>Хамгаалах тушаал</strong> — цагдаагийн газар эсвэл шүүхэд хүсэлт гаргаж болно. Хуулийн үнэгүй зөвлөгөө: <strong>1800-1800</strong></div>`},
-  protect:{title:'🛡️ Өөрийгөө хамгаалах',body:`<p>Аюулгүй байдлынхаа төлөвлөгөө гарга. Дараах алхмуудыг урьдчилан бэлдэж байх нь хамгийн чухал зүйл юм.</p><h4>Аюулгүй байдлын төлөвлөгөө:</h4><ul><li>Найдвартай хүнд өнөөгийн нөхцлөө ярь</li><li>Яаралтай гарах гэвэл хаашаа явахаа урьдчилан бодож бэлд</li><li>Паспорт, иргэний үнэмлэх, чухал баримт бичгийн хуулбарыг аюулгүй газар хадгал</li><li>Яаралтай дугаарыг цээжил: <strong>102, 107, 1800-1200</strong></li></ul><h4>Нотлох баримт цуглуулах:</h4><ul><li>Гэмтлийн зурааг авч, огноо, цагийг тэмдэглэ</li><li>Дарамтлагчийн мессеж, е-мэйлийг хэвлэж хадгал</li><li>Гэрчийн нэр, холбоо барих дугаарыг бичиж авч яв</li></ul><div class="abox abox-warn">⚠️ Нэн даруй аюулд байвал 102 руу залга эсвэл хамгийн ойр нийтийн газарт яв.</div>`}
+  child:{title:'👶 Хүүхдийн хамгаалал',body:`<p>Хүүхэд хохирогч болж буйг нь та эрт илрүүлснээр их хохиролоос урьдчилан сэргийлж чадна.</p><h4>Шинж тэмдгүүд:</h4><ul><li>Тайлбарлах боломжгүй гэмтэл, шарх</li><li>Гэнэтийн зан авирын өөрчлөлт — нийгмээс татгалзах, айдас</li><li>Тодорхой хүнтэй орохоос эсвэл ойртохоос айдаг</li><li>Насандаа тохирохгүй бэлгийн мэдлэгтэй байх</li><li>Нойр муу, зүүдэлдэг, цочирддог</li><li>Сургуулийн гүйцэтгэл огцом буурах</li></ul><div class="abox abox-warn">⚠️ Хүүхэд хохирч байна гэж сэжиглэвэл нэн даруй: <strong>102</strong> эсвэл хүүхдийн тусламжийн утас: <strong>108</strong></div>`},
+  legal:{title:'⚖️ Хуулийн эрх ба Хамгаалал',body:`<p>Монгол улсад хүчирхийллийн эсрэг дараах хуулиуд хамгаалалт олгодог:</p><ul><li><strong>Гэр бүлийн хүчирхийллийн эсрэг тэмцэх тухай хууль (2016):</strong> Хохирогчийг хамгаалах арга хэмжээ, хамгаалах тушаал олгох эрхийг тогтоодог.</li><li><strong>Эрүүгийн хууль:</strong> Бие махбодид гэм хор учруулах, заналхийлэх, бэлгийн халдлага зэрэг үйлдэлд ял оногдуулдаг.</li><li><strong>Хүүхдийн эрхийг хамгаалах тухай хууль:</strong> Хүүхдийн бүхий л хэлбэрийн хүчирхийллийн эсрэг хамгаалалт олгодог.</li></ul><div class="abox abox-info">💡 <strong>Хамгаалах тушаал</strong> — цагдаагийн газар эсвэл шүүхэд хүсэлт гаргаж болно. Хуулийн үнэгүй зөвлөгөө авахыг хүсвэл 107 дугаарт залга.</div>`},
+  protect:{title:'🛡️ Өөрийгөө хамгаалах',body:`<p>Аюулгүй байдлынхаа төлөвлөгөө гарга. Дараах алхмуудыг урьдчилан бэлдэж байх нь хамгийн чухал зүйл юм.</p><h4>Аюулгүй байдлын төлөвлөгөө:</h4><ul><li>Найдвартай хүнд өнөөгийн нөхцлөө ярь</li><li>Яаралтай гарах гэвэл хаашаа явахаа урьдчилан бодож бэлд</li><li>Паспорт, иргэний үнэмлэх, чухал баримт бичгийн хуулбарыг аюулгүй газар хадгал</li><li>Яаралтай дугаарыг цээжил: <strong>102, 107, 108</strong></li></ul><h4>Нотлох баримт цуглуулах:</h4><ul><li>Гэмтлийн зурааг авч, огноо, цагийг тэмдэглэ</li><li>Дарамтлагчийн мессеж, е-мэйлийг хэвлэж хадгал</li><li>Гэрчийн нэр, холбоо барих дугаарыг бичиж авч яв</li></ul><div class="abox abox-warn">⚠️ Нэн даруй аюулд байвал 102 руу залга эсвэл хамгийн ойр нийтийн газарт яв.</div>`}
 };
 
 /* ── MODAL ── */
@@ -1062,21 +1068,17 @@ function closeDrawer(){
 function drawerBgClick(e){if(e.target===document.getElementById('drawer'))closeDrawer();}
 
 /* ── NAV ── */
-const pageTitles={home:'Нүүр',info:'Мэдээлэл',help:'Тусламж авах',assess:'Өөрийгөө үнэлэх',faq:'FAQ',contact:'Холбоо барих','adm-login':'Админ нэвтрэх',adm:'Админ самбар'};
 const bnav=['home','info','help','assess'];
 function go(id,navBtn,bnId){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const pg=document.getElementById('page-'+id);
   if(pg)pg.classList.add('active');
-  // desktop nav
   document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
   if(navBtn)navBtn.classList.add('active');
-  // bottom nav
   bnav.forEach(n=>{
     const el=document.getElementById('bn-'+n);
     if(el)el.classList.toggle('active',n===id||(bnId&&n===bnId));
   });
-  // drawer links
   document.querySelectorAll('.mob-link').forEach(b=>b.classList.remove('active'));
   const ml=document.getElementById('ml-'+id);
   if(ml)ml.classList.add('active');
@@ -1085,6 +1087,8 @@ function go(id,navBtn,bnId){
   if(id==='assess')initQuiz();
 }
 function quickExit(){window.location.replace('https://www.google.com/search?q=weather+ulaanbaatar')}
+
+/* ── FAQ ── */
 function toggleFaq(el){
   const item=el.parentElement;
   const was=item.classList.contains('open');
@@ -1143,11 +1147,11 @@ function addArticle(){
 
 /* ── QUIZ ── */
 const Qs=[
-  {q:"Та хамтрагчийнхаа хажууд байхад аймхайрладаг уу?",s:"Айдасны мэдрэмж",o:["Огт байдаггүй","Заримдаа тийм","Байнга","Маш их"]},
-  {q:"Хамтрагч нь танай найз нөхөд, гэр бүлтэй харилцахаас таслах гэж оролддог уу?",s:"Нийгмийн тусгаарлал",o:["Огт байдаггүй","Заримдаа","Байнга","Яг одоо ийм нөхцөлд байна"]},
-  {q:"Хамтрагч нь болсон зүйлийг үгүйсгэж 'чи буруу ойлгосон' гэж хэлдэг үү?",s:"Газлайтинг",o:["Огт байдаггүй","Заримдаа","Байнга","Ийм зүйл болсон"]},
-  {q:"Хамтрагч нь мөнгийг тань хянадаг эсвэл ажиллахыг нь хориглодог уу?",s:"Санхүүгийн хяналт",o:["Огт байдаггүй","Хааяа","Байнга","Бүрэн хянадаг"]},
-  {q:"Хамтрагч нь тантай доромжлол, гутаан доромжлолтой ханддаг уу?",s:"Сэтгэл зүйн дарамт",o:["Огт байдаггүй","Маш ховор","Заримдаа","Байнга"]}
+  {q:"Та хамтрагчийнхаа хажууд байхад айж сандардаг уу?",s:"Айдасны мэдрэмж",o:["Огт байдаггүй","Заримдаа тийм","Байнга","Маш их"]},
+  {q:"Хамтрагч тань танай найз нөхөд, гэр бүлтэй харилцахаас таслах гэж оролддог уу?",s:"Нийгмийн тусгаарлал",o:["Огт байдаггүй","Заримдаа","Байнга","Яг одоо ийм нөхцөлд байна"]},
+  {q:"Хамтрагч тань болсон зүйлийг үгүйсгэж 'чи буруу ойлгосон' гэж хэлдэг үү?",s:"Газлайтинг",o:["Огт байдаггүй","Заримдаа","Байнга","Ийм зүйл болсон"]},
+  {q:"Хамтрагч тань мөнгийг тань хянадаг эсвэл ажиллахыг нь хориглодог уу?",s:"Санхүүгийн хяналт",o:["Огт байдаггүй","Хааяа","Байнга","Бүрэн хянадаг"]},
+  {q:"Хамтрагч тань тантай ёс бус, гутаан доромжлолтой ханддаг уу?",s:"Сэтгэл зүйн дарамт",o:["Огт байдаггүй","Маш ховор","Заримдаа","Байнга"]}
 ];
 let qi=0,qa=[];
 function initQuiz(){qi=0;qa=[];renderQ();}
@@ -1163,7 +1167,10 @@ function renderQ(){
       <button class="btn btn-o" onclick="prevQ()" ${qi===0?'disabled':''} style="padding:10px 18px;font-size:13px">← Буцах</button>
       <button class="btn btn-t" id="nb" onclick="nextQ()" disabled style="padding:10px 18px;font-size:13px">${qi===Qs.length-1?'Үр дүн →':'Дараах →'}</button>
     </div>`;
-  if(qa[qi]!==undefined){document.querySelectorAll('.qopt')[qa[qi]].classList.add('sel');document.getElementById('nb').disabled=false;}
+  if(qa[qi]!==undefined){
+    document.querySelectorAll('.qopt')[qa[qi]].classList.add('sel');
+    document.getElementById('nb').disabled=false;
+  }
 }
 function selQ(i,el){
   document.querySelectorAll('.qopt').forEach(b=>b.classList.remove('sel'));
@@ -1176,9 +1183,22 @@ function showRes(){
   document.getElementById('qprog').style.width='100%';
   const sc=qa.reduce((s,a)=>s+a,0),pct=sc/((Qs.length-1)*3);
   let icon,title,desc,badge,bc,act;
-  if(pct<0.33){icon='🌿';title='Таны нөхцөл харьцангуй тогтвортой байна';desc='Одоогийн хариултуудаас харахад таны харилцаанд томоохон аюулын шинж тэмдэг харагдахгүй байна. Гэсэн хэдий ч өөрийгөө ажиглаж байх нь хэзээ ч гэсэн чухал.';badge='Бага эрсдэл';bc='rb-low';act=`<button class="btn btn-t" onclick="go('info')" style="font-size:13px">Мэдээлэл унших →</button>`;}
-  else if(pct<0.66){icon='⚠️';title='Зарим шинж тэмдэг байна';desc='Таны хариултуудаас харахад зарим санаа зовоох шинж тэмдэг харагдаж байна. Найдвартай хүн эсвэл мэргэжлийн зөвлөгчтэй ярилцах нь зүйтэй.';badge='Дунд эрсдэл';bc='rb-med';act=`<button class="btn btn-t" onclick="go('help')" style="font-size:13px">Тусламж авах →</button>`;}
-  else{icon='🆘';title='Та тусламж авах шаардлагатай';desc='Таны хариултуудаас харахад хүчирхийллийн хэд хэдэн шинж тэмдэг байна. Та ганцаараа биш — мэргэжлийн тусламж авах нь маш чухал.';badge='Өндөр эрсдэл';bc='rb-high';act=`<a href="tel:18001200" class="btn btn-r" style="font-size:13px;display:inline-block">🚨 1800-1200 Залгах</a>`;}
+  if(pct<0.33){
+    icon='🌿';title='Таны нөхцөл харьцангуй тогтвортой байна';
+    desc='Одоогийн хариултуудаас харахад таны харилцаанд томоохон аюулын шинж тэмдэг харагдахгүй байна. Гэсэн хэдий ч өөрийгөө ажиглаж байх нь хэзээ ч гэсэн чухал.';
+    badge='Бага эрсдэл';bc='rb-low';
+    act=`<button class="btn btn-t" onclick="go('info')" style="font-size:13px">Мэдээлэл унших →</button>`;
+  } else if(pct<0.66){
+    icon='⚠️';title='Зарим шинж тэмдэг байна';
+    desc='Таны хариултуудаас харахад зарим санаа зовоох шинж тэмдэг харагдаж байна. Найдвартай хүн эсвэл мэргэжлийн зөвлөгчтэй ярилцах нь зүйтэй.';
+    badge='Дунд эрсдэл';bc='rb-med';
+    act=`<button class="btn btn-t" onclick="go('help')" style="font-size:13px">Тусламж авах →</button>`;
+  } else {
+    icon='🆘';title='Та тусламж авах шаардлагатай';
+    desc='Таны хариултуудаас харахад хүчирхийллийн хэд хэдэн шинж тэмдэг байна. Та ганцаараа биш — мэргэжлийн тусламж авах нь маш чухал.';
+    badge='Өндөр эрсдэл';bc='rb-high';
+    act=`<a href="tel:107" class="btn btn-r" style="font-size:13px;display:inline-block">🚨 107 Залгах</a>`;
+  }
   document.getElementById('qcontent').innerHTML=`
     <div class="res-box">
       <div class="res-icon">${icon}</div>
@@ -1189,10 +1209,12 @@ function showRes(){
         ${act}
         <button class="btn btn-o" onclick="go('help')" style="font-size:13px">Байгууллагууд →</button>
       </div>
-      <br><button class="btn btn-o" onclick="initQuiz()" style="margin-top:6px;font-size:12px">Дахин эхлэх</button>
+      <br><button class="btn btn-o" onclick="initQuiz()" style="margin-top:6px;font-size:13px">Дахин эхлэх</button>
       <p style="font-size:11px;color:var(--text3);margin-top:12px">⚠️ Мэдээллийн зорилготой бөгөөд мэргэжлийн онош биш.</p>
     </div>`;
 }
+
+/* Init */
 initQuiz();
 </script>
 </body>
